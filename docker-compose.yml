@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend/chamadoapp
+    container_name: chamado-backend
+    ports:
+      - "8080:8080"
+    networks:
+      - chamado-net
+
+  frontend:
+    build:
+      context: ./frontend/chamado-frontend
+    container_name: chamado-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - chamado-net
+
+networks:
+  chamado-net:
+    driver: bridge
