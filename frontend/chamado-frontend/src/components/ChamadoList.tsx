@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import api from "../services/api";
-import ChamadoForm from "../components/chamadoForm";
+import api from "../services/Api";
+import ChamadoForm from "../components/ChamadoForm";
+import { Chamado } from "../types";
 
 const ChamadoList = () => {
-  const [chamados, setChamados] = useState([]);
-  const [chamadoEditando, setChamadoEditando] = useState(null);
+  const [chamados, setChamados] = useState<Chamado[]>([]);
+  const [chamadoEditando, setChamadoEditando] = useState<Chamado | null>(null);
 
   const carregarChamados = async () => {
     try {
@@ -15,7 +16,7 @@ const ChamadoList = () => {
     }
   };
 
-  const excluirChamado = async (id) => {
+  const excluirChamado = async (id: number) => {
     if (!confirm("Tem certeza que deseja excluir este chamado?")) return;
 
     try {
@@ -26,11 +27,11 @@ const ChamadoList = () => {
     }
   };
 
-  const adicionarChamado = (novoChamado) => {
+  const adicionarChamado = (novoChamado: Chamado) => {
     setChamados([...chamados, novoChamado]);
   };
 
-  const atualizarChamado = (chamadoAtualizado) => {
+  const atualizarChamado = (chamadoAtualizado: Chamado) => {
     setChamados(
       chamados.map((c) => (c.id === chamadoAtualizado.id ? chamadoAtualizado : c))
     );
@@ -56,8 +57,7 @@ const ChamadoList = () => {
             <strong>{chamado.titulo}</strong> - {chamado.status}
             <p>{chamado.descricao}</p>
             <small>
-              Criado em:{" "}
-              {new Date(chamado.dataCriacao).toLocaleString()}
+              Criado em: {new Date(chamado.dataCriacao).toLocaleString()}
             </small>
             <div style={{ marginTop: "0.5rem" }}>
               <button
