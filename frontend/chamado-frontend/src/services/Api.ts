@@ -1,8 +1,9 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "/api/chamados", // isso será redirecionado pelo NGINX ou proxy
+  baseURL: "https//localhost:8080/api/chamados", // nome do serviço no docker-compose
 });
 
-export default api;
 
+
+export default api;

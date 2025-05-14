@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("/chamados")
+@RequestMapping("api/chamados")
 public class ChamadoController {
 
     private final ChamadoService chamadoService;
