@@ -28,14 +28,14 @@ const ChamadoForm = ({
 
     try {
       if (chamadoEditando) {
-        const response = await api.put(`/chamados/${chamadoEditando.id}`, {
+        const response = await api.put(`/api/chamados/${chamadoEditando.id}`, {
           ...chamadoEditando,
           titulo,
           descricao,
         });
         onAtualizarChamado(response.data);
       } else {
-        const response = await api.post("/chamados", {
+        const response = await api.post("/api/chamados", {
           titulo,
           descricao,
           status: "ABERTO",

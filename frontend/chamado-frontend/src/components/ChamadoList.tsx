@@ -9,7 +9,7 @@ const ChamadoList = () => {
 
   const carregarChamados = async () => {
     try {
-      const response = await api.get("/chamados");
+      const response = await api.get("/api/chamados");
       setChamados(response.data);
     } catch (error) {
       console.error("Erro ao buscar chamados:", error);
@@ -20,7 +20,7 @@ const ChamadoList = () => {
     if (!confirm("Tem certeza que deseja excluir este chamado?")) return;
 
     try {
-      await api.delete(`/chamados/${id}`);
+      await api.delete(`/api/chamados/${id}`);
       setChamados(chamados.filter((chamado) => chamado.id !== id));
     } catch (error) {
       console.error("Erro ao excluir chamado:", error);
