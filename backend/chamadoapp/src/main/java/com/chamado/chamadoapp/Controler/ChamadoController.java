@@ -2,12 +2,10 @@ package com.chamado.chamadoapp.Controler;
 
 import com.chamado.chamadoapp.Model.Chamado;
 import com.chamado.chamadoapp.Service.ChamadoService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import org.springframework.stereotype.Controller;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
